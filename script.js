@@ -17,13 +17,13 @@ const activateChoice = (icon) => {
         choiceButtons[0].classList.remove("active");
         player1 = "o";
     }
-    console.log(player1);
+    
 };
 
 const startGame = (modeParam) => {
     home.style.display = "none";
     board.style.display = "flex";
     mode = modeParam;
-    console.log(mode);
+    
 }
 
