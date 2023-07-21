@@ -258,3 +258,64 @@ body {
     width: 40px;
     height: 40px;
 }
+
+#modal {
+    /* display: none; */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.modal-box {
+    width: 100%;
+    padding: 40px 48px 48px 48px;
+    background-color: var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-info-text {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17.64px;
+    letter-spacing: 0.88px;
+    color: var(--light);
+    text-transform: uppercase;
+}
+
+.modal-box div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-box div img {
+    width: 30px;
+    height: 30px;
+    margin-top: 16px;
+}
+
+.result-text {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30.24px;
+    letter-spacing: 1.5px;
+    color: var(--orange);
+    text-transform: uppercase;
+}
+
+.result-buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+}
