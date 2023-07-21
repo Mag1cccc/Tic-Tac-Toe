@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div id="modal">
         <div class="modal-box">
             <p class="result-info-text"> OH NO, YOU LOST… </p>
@@ -21,8 +22,32 @@
                 <p class="result-text"> TAKES THE ROUND </p>
             </div>
             <div class="result-buttons">
-                <button class="quit-btn">quit</button>
-                <button class="next-round-btn">next round</button>
+                <button class="quit-btn" onclick="quit()">quit</button>
+                <button class="next-round-btn" onclick="nextRound()">next round</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-tie">
+        <div class="modal-box">
+            <div>
+                <p class="result-text"> ROUND TIED </p>
+            </div>
+            <div class="result-buttons">
+                <button class="quit-btn" onclick="quit()">quit</button>
+                <button class="next-round-btn" onclick="nextRound()">next round</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-restart">
+        <div class="modal-box">
+            <div>
+                <p class="result-text"> RESTART GAME? </p>
+            </div>
+            <div class="result-buttons">
+                <button class="quit-btn" onclick="closeModal()">NO, CANCEL</button>
+                <button class="next-round-btn" onclick="restartFunc()">YES, RESTART</button>
             </div>
         </div>
     </div>
@@ -77,7 +102,7 @@
                 <img src="./assets/icon-x-gray.svg" alt="image x gray">
                 <h3>turn</h3>
             </div>
-            <button class="restart">
+            <button class="restart" onclick="openRestartModal()">
                 <img src="./assets/icon-restart.svg" alt="restart button">
             </button>
         </div>
@@ -98,8 +123,8 @@
                 <span id="x-score">0</span>
             </div>
             <div class="statistics-box">
-                <h3>ties</h3>
-                <span>0</span>
+                <h3 id="o-score-text">ties</h3>
+                <span id="tie-score">0</span>
             </div>
             <div class="statistics-box">
                 <h3 id="o-score-text">O (cpu)</h3>
@@ -110,5 +135,6 @@
 
     
     <script src="./script.js"></script>
+    
 </body>
 </html>
