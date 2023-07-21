@@ -6,7 +6,12 @@ const xScoreText = document.querySelector("#x-score-text");
 const oScoreText = document.querySelector("#o-score-text");
 const xScoreElement = document.querySelector("#x-score");
 const oScoreElement = document.querySelector("#o-score");
-const turnInfoImage = document.querySelector(".turn-box img")
+const turnInfoImage = document.querySelector(".turn-box img");
+const modal = document.querySelector("#modal");
+const modalInfoText = document.querySelector(".result-info-text");
+const modalIcon = document.querySelector(".modal-box img");
+const modalResultText = document.querySelector(".result-text");
+
 
 
 let player1 = "x";
@@ -40,6 +45,23 @@ const activateChoice = (icon) => {
     
 };
 
+const checkXwin = () => {
+    return winnerCombinations.find((combination) =>
+        combination.every((button) => xArray.includes(button))
+    );
+};
+
+const onWinX = () => {
+    modal.style.display = "flex";
+    modalIcon.src = "./assets/icon-x.svg";
+    modalResultText.style.color = "#31C3BD";
+    if(player1 === "x") {
+        modalInfoText.textContent = "you won!";
+    } else {
+        modalInfoText.textContent = "OH NO, YOU LOST…";
+    }
+}
+
 const onHoverEffects = () => {
     for (let index = 0; index < freeButtons.length; index++) {
         const playButtonIndex = freeButtons[index];
@@ -55,7 +77,6 @@ const onHoverEffects = () => {
 
 const createClickedFunctions = () => {
     for (let index = 0; index < playButtons.length; index++) {
-        console.log(playButtons[index]);
         playButtons[index].onclick = (event) => {
             event.target.classList.remove("xHover");
             event.target.classList.remove("oHover");
@@ -68,11 +89,18 @@ const createClickedFunctions = () => {
             if(turn === "x"){
                 icon.src = "./assets/icon-x.svg";
                 event.target.append(icon);
+                xArray.push(index);
+                const win = checkXwin();
+                if (win) {
+                    onWinX();
+                    return; 
+                }
                 turn = "o";
-                turnInfoImage.src = "./assets/icon-o-gray.svg"
+                turnInfoImage.src = "./assets/icon-o-gray.svg";
             } else {
                 icon.src = "./assets/icon-o.svg";
                 event.target.append(icon);
+                oArray.push(index);
                 turn = "x";
                 turnInfoImage.src = "./assets/icon-x-gray.svg"
             }
